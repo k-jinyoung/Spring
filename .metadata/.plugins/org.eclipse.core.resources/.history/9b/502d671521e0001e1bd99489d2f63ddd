@@ -1,0 +1,5 @@
+package com.codehows.domain;
+
+public class TodoDTO {
+
+}
