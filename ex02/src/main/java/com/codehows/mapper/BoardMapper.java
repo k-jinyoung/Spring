@@ -13,5 +13,11 @@ public interface BoardMapper {
 	public void insert(BoardVO board);			//PK 값을 알 필요가 없는 경우
 	
 	public void insertSelectKey(BoardVO board);	// PK 값을 알 필요가 있는 경우
+	
+	public BoardVO read(Long bno);
+	
+	public int delete (Long bno);
+	
+	public int update (BoardVO board);
 
 }
