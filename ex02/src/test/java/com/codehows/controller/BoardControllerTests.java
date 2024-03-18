@@ -79,7 +79,7 @@ public class BoardControllerTests {
 		log.info(resultPage);
 	}*/
 	
-	@Test
+	/*@Test
 	public void testRemove() throws Exception{
 		//삭제전 데이터베이스에 게시물 번호 확인할 것
 		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/board/remove")
@@ -87,6 +87,16 @@ public class BoardControllerTests {
 				).andReturn().getModelAndView().getViewName();
 		
 		log.info(resultPage);
+	}*/
+	
+	@Test
+	public void testListPaging() throws Exception{
+		
+		log.info(mockMvc.perform(
+				MockMvcRequestBuilders.get("/board/list")
+				.param("pageNum", "2")
+				.param("amount", "50"))
+				.andReturn().getModelAndView().getModelMap());
 	}
 	
 

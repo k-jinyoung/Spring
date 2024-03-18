@@ -3,6 +3,9 @@ package com.codehows.service;
 import java.util.List;
 
 import com.codehows.domain.BoardVO;
+import com.codehows.domain.Criteria;
+
+import com.codehows.domain.BoardVO;
 
 public interface BoardService {
 	
@@ -14,5 +17,9 @@ public interface BoardService {
 	
 	public boolean remove(Long bno);						//bno 기준으로 글 삭제
 	
-	public List<BoardVO> getList();							//전체 내용 가져오기
+	//public List<BoardVO> getList();							//전체 내용 가져오기
+	
+	public List<BoardVO> getList(Criteria cri);
+
+	public int getTotal(Criteria cri);
 }

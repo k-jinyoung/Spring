@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.codehows.domain.BoardVO;
+import com.codehows.domain.Criteria;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -70,7 +71,7 @@ public class BoardServiceTests {
 	
 	
 	//특정 게시물 수정
-	@Test
+	/*@Test
 	public void testUpdate() {
 		
 		BoardVO board = service.get(11L);
@@ -81,6 +82,13 @@ public class BoardServiceTests {
 		
 		board.setTitle("제목 수정합니다.");
 		log.info("MODIFY RESULT: " + service.modify(board));
+	}*/
+	
+	@Test
+	public void testGetList() {
+		
+		//service.getList().forEach(board -> log.info(board));
+		service.getList(new Criteria(2,10)).forEach(board -> log.info(board));
 	}
 
 }
