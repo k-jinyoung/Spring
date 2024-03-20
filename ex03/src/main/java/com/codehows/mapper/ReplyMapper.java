@@ -25,4 +25,5 @@ public interface ReplyMapper {
 			@Param("cri") Criteria cri,				//criteria 안에 있는 cri를 넣어주겠다.
 			@Param("bno") Long bno);
 
+	public int getCountByBno(Long bno);
 }

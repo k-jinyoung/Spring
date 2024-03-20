@@ -3,6 +3,7 @@ package com.codehows.service;
 import java.util.List;
 
 import com.codehows.domain.Criteria;
+import com.codehows.domain.ReplyPageDTO;
 import com.codehows.domain.ReplyVO;
 
 public interface ReplyService {
@@ -21,4 +22,6 @@ public interface ReplyService {
 	
 	//mapper ¾È¿¡ getListWithPaging
 	public List<ReplyVO> getList(Criteria cri, Long bno);
+	
+	public ReplyPageDTO getListPage(Criteria cri, Long bno);
 }

@@ -74,7 +74,7 @@ public class ReplyMapperTests {
 	}*/
 	
 	//@Param 어노테이션을 이용한 댓글 목록 만들기
-	@Test
+	/*@Test
 	public void testList() {
 		
 		Criteria cri = new Criteria();
@@ -83,7 +83,16 @@ public class ReplyMapperTests {
 		List<ReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
 		
 		replies.forEach(reply -> log.info(reply));
-	}
+	}*/
+	
+	//페이징 처리 테스트
+	@Test
+	   public void testList2() {
+	      Criteria cri = new Criteria(2, 10);
+	      
+	      List<ReplyVO> replies = mapper.getListWithPaging(cri, 280L);
+	      replies.forEach(reply -> log.info(reply));
+	   }
 	
 	
 	/*

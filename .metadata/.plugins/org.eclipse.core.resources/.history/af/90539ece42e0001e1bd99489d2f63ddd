@@ -1,5 +1,0 @@
-package com.codehows.exception;
-
-public class CommonExceptionAdvice {
-
-}
