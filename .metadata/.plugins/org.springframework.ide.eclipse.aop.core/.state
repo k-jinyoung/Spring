@@ -3,4 +3,9 @@
 <aop-project name="ex01"/>
 <aop-project name="ex02"/>
 <aop-project name="ex03"/>
+<aop-project name="ex04">
+<aspect-definition advice-class-name="com.codehows.aop.LogAdvice" advice-method-name="logBefore" advice-type="BEFORE" aspect-end-line-number="17" aspect-name="logAdvice" aspect-start-line-number="17" factory-id="org.springframework.ide.eclipse.aop.core.annotationAspectDefinitionElementFactory" file="/ex04/src/main/webapp/WEB-INF/spring/root-context.xml" pointcut-expression="execution(* com.codehows.service.SampleService*.*(..))" proxy-target-class="false">
+<aop-reference advice-type="BEFORE" bean="1:BeansModel|2:ex04|3:src/main/webapp/WEB-INF/spring/root-context.xml|7:beans:8|8:sampleServiceImpl:8" bean-file="/ex04/src/main/webapp/WEB-INF/spring/root-context.xml" bean-start-line="8" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/ex04/src/main/webapp/WEB-INF/spring/root-context.xml" source="=ex04/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.codehows.aop{LogAdvice.java[LogAdvice~logBefore" source-start-line="15" target="=ex04/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.codehows.service{SampleServiceImpl.java[SampleServiceImpl~doAdd~QString;~QString;" target-start-line="10"/>
+</aspect-definition>
+</aop-project>
 </aop-reference-model>

@@ -17,11 +17,21 @@ public class SampleServiceTests {
 	@Setter(onMethod_ = @Autowired)
 	private SampleService service;
 	
-	@Test
+	/*@Test
 	public void testClass() {
 		
 		log.info(service);
 		log.info(service.getClass().getName());
+	}*/
+	
+	@Test
+	public void testAdd() throws Exception {
+		log.info(service.doAdd("123", "456"));
 	}
-
+	
+	/*@Test
+	public void testAddError() throws Exception {
+		log.info(service.doAdd("123", "ABC"));
+	}*/
+	
 }
