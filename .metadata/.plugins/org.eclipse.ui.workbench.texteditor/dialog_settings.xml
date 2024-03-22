@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="log4j"/>
+		<item key="selection" value="showUploadedFile"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="showUploadedFile"/>
+			<item value="jackson-databind"/>
+			<item value="junit"/>
+			<item value="xml"/>
+			<item value="ojdbc"/>
+			<item value="servlet"/>
+			<item value="log4j2"/>
+			<item value="spring-tx"/>
+			<item value="spring-jdbc"/>
 			<item value="log4j"/>
 			<item value="kog4j"/>
 			<item value="AspectJ"/>
 			<item value="add test lib"/>
 			<item value="showlist(page)"/>
 			<item value="showlist(page"/>
-			<item value="madalremoveBtn"/>
-			<item value="madalModBtn"/>
-			<item value="repltCnt"/>
-			<item value="replyUL"/>
-			<item value="showreplypage"/>
-			<item value="showList(page)"/>
-			<item value="getList"/>
-			<item value="jdbc"/>
-			<item value="lombok"/>
 		</list>
 		<list key="replacehistory">
 			<item value="/resources/"/>
