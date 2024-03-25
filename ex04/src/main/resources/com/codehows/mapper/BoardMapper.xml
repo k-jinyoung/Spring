@@ -55,8 +55,7 @@
 	<insert id="insert">
 		insert into tbl_board(bno, title, content, writer)
 		values
-		(seq_board.nextval, #{title}, #{content}, #{writer})		<!-- boardVO 안에 있는 
-			값을 호출 -->
+		(seq_board.nextval, #{title}, #{content}, #{writer})		<!-- boardVO 안에 있는 값을 호출 -->
 	</insert>
 
 	<insert id="insertSelectKey">
@@ -67,13 +66,11 @@
 		</selectKey>
 
 		insert into tbl_board (bno, title, content, writer)
-		values (#{bno},
-		#{title}, #{content}, #{writer})			<!-- boardVO 안에 있는 값을 호출 -->
+		values (#{bno}, #{title}, #{content}, #{writer})			<!-- boardVO 안에 있는 값을 호출 -->
 	</insert>
 
 	<select id="read" resultType="com.codehows.domain.BoardVO">
-		select * from tbl_board where bno =
-		#{bno}
+		select * from tbl_board where bno = #{bno}
 	</select>
 
 	<delete id="delete">

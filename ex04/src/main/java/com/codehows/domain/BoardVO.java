@@ -1,6 +1,7 @@
 package com.codehows.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import  lombok.Data;
 
@@ -15,5 +16,8 @@ public class BoardVO {
 	private Date updateDate;
 	
 	private int replyCnt;
+	
+	//attachList라는 변수로 첨부파일의 정보를 수집한다.
+	private List<BoardAttachVO> attachList;
 
 }
