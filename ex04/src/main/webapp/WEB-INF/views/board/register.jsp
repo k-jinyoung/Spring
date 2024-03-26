@@ -4,7 +4,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ include file="../includes/header.jsp"%>
+
+
 <!-- CSS 추가하기 -->
+<div class='bigPictureWrapper'>
+	<div class='bigPicture'>
+	</div>
+</div>
+
 <style>
 .uploadResult {
 	width:100%;
@@ -136,8 +143,8 @@ $(document).ready(function(e){
 			
 			str += "<input type='hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
 			str += "<input type='hidden' name='attachList["+i+"].uuid' value='"+jobj.data("uuid")+"'>";
+			str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
 			str += "<input type='hidden' name='attachList["+i+"].fileType' value='"+jobj.data("type")+"'>";
-			// 3월 25일 여기까지
 		});
 		formObj.append(str).submit();
 	});

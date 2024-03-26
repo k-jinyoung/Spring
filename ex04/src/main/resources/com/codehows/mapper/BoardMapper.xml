@@ -54,8 +54,7 @@
 
 	<insert id="insert">
 		insert into tbl_board(bno, title, content, writer)
-		values
-		(seq_board.nextval, #{title}, #{content}, #{writer})		<!-- boardVO 안에 있는 값을 호출 -->
+		values (seq_board.nextval, #{title}, #{content}, #{writer})		<!-- boardVO 안에 있는 값을 호출 -->
 	</insert>
 
 	<insert id="insertSelectKey">

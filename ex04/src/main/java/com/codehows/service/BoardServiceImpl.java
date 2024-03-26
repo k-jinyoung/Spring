@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.codehows.domain.BoardAttachVO;
 import com.codehows.domain.BoardVO;
 import com.codehows.domain.Criteria;
 import com.codehows.mapper.BoardAttachMapper;
@@ -59,10 +60,13 @@ public class BoardServiceImpl implements BoardService {
       return mapper.update(board) == 1;
    }
 
+   @Transactional
    @Override
    public boolean remove(Long bno) {
 
       log.info("remove...." + bno);
+      
+      attachMapper.deleteAll(bno);
 
       return mapper.delete(bno) == 1;
    }
@@ -87,6 +91,13 @@ public class BoardServiceImpl implements BoardService {
    public int getTotal(Criteria cri) {
 	   log.info("get total count");
 	   return mapper.getTotalCount(cri);
+   }
+   
+   @Override
+   public List<BoardAttachVO> getAttachList(Long bno){
+	   log.info("get Attach list by bno" + bno);
+	   
+	   return attachMapper.findByBno(bno);
    }
 
 }
