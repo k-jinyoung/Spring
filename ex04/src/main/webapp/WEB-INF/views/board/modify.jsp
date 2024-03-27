@@ -234,5 +234,102 @@ $(".uploadResult").on("click", "button", function(e){
 	}
 });
 
+//첨부파일 추가하기(기존의 게시물 등록과 동일)
+
+//파일 확장자를 확인하기 위한 정규 표현식 설정(exe, sh, zip, alz 확장자를 가진 파일 차단)
+var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+var maxSize = 5242880; //5MB
+
+//파일의 확장자와 크기를 확인하는 함수
+function checkExtension(fileName, fileSize){
+	
+	//파일 크기가 maxSize보다 크면
+	if(fileSize >= maxSize){
+		alert("파일 사이즈 초과");
+		return false;
+	}
+	
+	//파일 이름이 정규 표현식에 일치하면
+	if(regex.test(fileName)){
+		alert("해당 종류의 파일은 업로드할 수 없습니다.");
+		return false;
+	}
+	// 일치하지 않는다면 true 반환
+	return true;
+}
+
+//파일 선택(input[type='file'].change)시 발생하는 이벤트에 대한 핸들러
+$("input[type='file']").change(function(e){
+	var formData = new FormData();
+	var inputFile = $("input[name='uploadFile']");
+	var files = inputFile[0].files;
+	
+	for(var i=0; i<files.length; i++){
+		
+		if(!checkExtension(files[i].name, files[i].size)){
+			return false;
+		}
+		formData.append("uploadFile", files[i]);
+	}
+	
+	$.ajax({
+		url: '/uploadAjaxAction',
+		processData: false,
+		contentType: false,
+		data: formData,
+		type: 'POST',
+		dataType: 'json',
+			success: function(result){
+				console.log(result);
+				showUploadResult(result);		//업로드 결과 처리 함수
+			}
+	});		//$.ajax
+});
+
+function showUploadResult(uploadResultArr){
+	if(!uploadResultArr || uploadResultArr.length == 0){return; }
+	
+	var uploadUL = $(".uploadResult ul");
+	var str = "";
+	
+	$(uploadResultArr).each(function(i, obj){
+		//image type
+		//obj.fileName = 파일 이름
+		
+		//이미지 파일인 경우
+		if(obj.image){
+			var fileCallPath = encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid +"_"+obj.fileName);
+			
+			str += " <li data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'><div>";
+			str += "<span> "+ obj.fileName+"</span>";
+			str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+			str += "<img src='/display?fileName="+fileCallPath+"'>";
+			str += "</div>";
+			str += "</li>";
+			
+		} else {
+		//일반 파일인 경우
+		var fileCallPath = encodeURIComponent( obj.uploadPath+ "/"+obj.uuid +"_"+obj.fileName);				
+		var fileLink = fileCallPath.replace(new RegExp(/\\/g), "/");
+		
+		str += "<li data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'><div>";
+		str += "<span> "+ obj.fileName+"</span>";
+		str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='file' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+		str += "<img src='/resources/img/attach.png'>";
+		str += "</div>";
+		str += "</li>";								
+		}
+	});
+	uploadUL.append(str);
+}
+
+$(".uploadResult").on("click", "button", function(e){
+	console.log("delete file");
+	
+	var targetFile = $(this).data("file");
+	var type = $(this).data("type");
+	
+	var targetLi = $(this).closest("li");
+
 </script>
 <%@ include file="../includes/footer.jsp"%>
